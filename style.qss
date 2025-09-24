@@ -1,0 +1,420 @@
+/* filename: style.qss (Corrected Version) */
+
+/* =============================================================== */
+/*                      Global & Main Window                       */
+/* =============================================================== */
+QMainWindow { 
+    background-color: #f0f0f0; 
+}
+
+/* =============================================================== */
+/*      QSpinBox - Styled with Arrows (No Image Needed)            */
+/* =============================================================== */
+QSpinBox {
+    padding-right: 18px; /* make room for the buttons */
+    border: 1px solid #a0a0a0;
+    border-radius: 4px;
+    background-color: #fcfcfc;
+    font-weight: normal;
+}
+
+QSpinBox::up-button {
+    subcontrol-origin: border;
+    subcontrol-position: top right;
+    width: 18px;
+    border-left: 1px solid #a0a0a0;
+    border-bottom: 1px solid #a0a0a0;
+    border-top-right-radius: 3px;
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f0f0f0, stop: 1 #e5e5e5);
+}
+
+QSpinBox::up-button:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #e0e0f0, stop: 1 #d5d5e5);
+}
+
+QSpinBox::up-arrow {
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid #555; /* Creates an upward-pointing triangle */
+    margin: 0 auto;
+}
+
+QSpinBox::down-button {
+    subcontrol-origin: border;
+    subcontrol-position: bottom right;
+    width: 18px;
+    border-left: 1px solid #a0a0a0;
+    border-bottom-right-radius: 3px;
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f0f0f0, stop: 1 #e5e5e5);
+}
+
+QSpinBox::down-button:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #e0e0f0, stop: 1 #d5d5e5);
+}
+
+QSpinBox::down-arrow {
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #555; /* Creates a downward-pointing triangle */
+    margin: 0 auto;
+}
+
+/* ---------- GroupBoxes ---------- */
+QGroupBox {
+    background-color: #ffffff;
+    border: 1px solid #cfd6e0;
+    border-radius: 6px;
+    margin-top: 12px;
+    padding: 8px;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 1px 5px;
+    left: 10px;
+    color: #2e2e2e; 
+    font-weight: bold; 
+    background-color: #ffffff;
+}
+
+/* Device Connection – dynamic by property "connState" */
+#connection_group::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 2px 8px;
+    background-color: #e8e8e8;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 1px solid #d0d0d0;
+    border-bottom: none;
+}
+QGroupBox#connection_group { 
+    border: 1px solid #cfd6e0; 
+    border-radius: 6px; 
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffffff, stop: 1 #f7f7f7);
+}
+QGroupBox#connection_group[connState="connected"] { border: 1.3px solid #2ecc71; }
+QGroupBox#connection_group[connState="failed"] { border: 1.3px solid #f39c12; } 
+QGroupBox#connection_group[connState="disconnected"] { border: 1.3px solid #e74c3c; }
+QGroupBox#connection_group[connState="default"] { border: 1.3px solid #adadad; }
+
+/* Motor Control – one step thinner (1.5px), dark brown */
+QGroupBox#motor_group { 
+    border: 1px solid #9c7046; /* CORRECTION 1: Removed invalid "75%" */
+    border-radius: 8px;
+    margin-top: 10px;
+    font-weight: bold;
+    background-color: #fafafa;
+}
+QGroupBox#motor_group::title { 
+    color: #4b2e13; 
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 3px 5px;
+    border-top: none;
+    border-radius: 5px; 
+}
+
+/* Speed & Manual – dashed and thinner (1px) */
+QGroupBox#speed_group, QGroupBox#manual_group { 
+    border: 1px dashed #6c6c6c; 
+}
+QGroupBox#speed_group::title, QGroupBox#manual_group::title { 
+    color: #444; 
+}
+
+/* Reference Voltage – one step thinner (1.5px), dark yellow */
+QGroupBox#dac_group { 
+    border: 1px solid #f7dd48da; /* CORRECTION 2: Removed invalid "75%" */
+    border-radius: 8px;
+    margin-top: 10px;
+    background-color: #fafafa; 
+}
+QGroupBox#dac_group::title { 
+    color: #bd9100; 
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 3px 5px;
+    border-top: none;
+    border-radius: 5px; 
+}
+
+/* Resistance Select – one step thinner (1.5px), blue */
+QGroupBox#res_group { border: 1px solid #1e90ff; }
+QGroupBox#res_group::title { color: #1e5fbf; }
+
+/* ---------- Labels ---------- */
+QLabel { 
+    background: transparent; 
+    padding: 2px 0; 
+}
+#connection_status_label { 
+    font-weight: bold; 
+    padding-left: 10px; 
+}
+
+/* Position label – light bg + sunken */
+#position_label {
+    background-color: #fff9e6;
+    border: 1px inset #bdbdbd;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Recording status indicator by state */
+#recording_status_indicator[rec="armed"] { color: #777; font-weight: bold; }
+#recording_status_indicator[rec="recording"] { color: #d10; font-weight: bold; }
+#recording_status_indicator[rec="paused"] { color: #e69500; font-weight: bold; }
+
+/* ---------- Buttons (Win7 glass-like) ---------- */
+QPushButton {
+    padding: 4px 9px; 
+    margin: 2px; 
+    min-height: 22px;
+    color: #12263a;
+    border: 1px solid #7fa6d9; 
+    border-radius: 6px;
+    background: qlineargradient(x1:0,y1:0,x2:0,y2:1,
+    stop:0 #ffffff,
+    stop:0.45 #ecf3ff,
+    stop:0.46 #dbe9ff,
+    stop:1 #c7daf7);
+}
+QPushButton:hover {
+    border-color: #5a9be7;
+    background: qlineargradient(x1:0,y1:0,x2:0,y2:1,
+    stop:0 #ffffff,
+    stop:0.45 #f2f7ff,
+    stop:0.46 #e6f0ff,
+    stop:1 #d1e2fb);
+}
+QPushButton:pressed {
+    padding-top: 5px; 
+    padding-bottom: 3px;
+    border-color: #4a90e2;
+    background: qlineargradient(x1:0,y1:0,x2:0,y2:1,
+    stop:0 #c6dbfb, stop:1 #f0f6ff);
+}
+QPushButton:disabled { 
+    color: #9aa1a9; 
+    border-color: #cdd6e3; 
+    background: #eef2f7; 
+}
+#manual_full_stop_button { 
+    color: #fff;
+    border: 1px solid #9c1b1b;
+    background: qlineargradient(x1:0,y1:0,x2:0,y2:1,
+    stop:0 #ffcdcd, stop:1 #ff6b6b);
+    font-weight: bold;
+}
+
+/* Run button green when running (no setStyleSheet in code) */
+#manual_run_button[state="running"] {
+    color: #fff;
+    border: 1px solid #1f7e2a;
+    background: qlineargradient(x1:0,y1:0,x2:0,y2:1,
+    stop:0 #5fdc7a,
+    stop:1 #2db24f);
+    font-weight: bold;
+}
+
+/* Pause button flashing when paused (toggle via property flash="on"/"off") */
+#manual_pause_button[flash="on"] {
+    color: #d35400;
+    background: qlineargradient(x1:0,y1:0,x2:0,y2:1,
+    stop:0 #fff6ad, stop:1 #ffe066);
+    font-weight: bold;
+}
+
+/* Left/Right buttons icons via QSS (needs icons folder). */
+#move_left_button {
+    qproperty-icon: url(./Rail_module_V10/icons/triangles-left.svg);
+    qproperty-iconSize: 16px 16px;
+}
+#move_right_button {
+    qproperty-icon: url(./Rail_module_V10/icons/triangles-right.svg);
+    qproperty-iconSize: 16px 16px;
+}
+
+/* ---------- Inputs ---------- */
+QLineEdit, QSpinBox {
+    background: #ffffff; 
+    color: #222;
+    border: 1px solid #9fb3cc; 
+    border-radius: 4px; 
+    padding: 4px 6px; 
+    min-height: 20px;
+}
+
+QLineEdit:focus, QSpinBox:focus, QComboBox:focus { 
+    border: 1px solid #4a90e2; 
+    outline: none; 
+}
+
+/* ComboBox – keep native arrow (NO ::down-arrow styling) */
+QComboBox {
+    border: 1px solid #a0a0a0;
+    border-radius: 4px;
+    padding: 2px 20px 2px 5px; /* Right padding for arrow */
+    background-color: white;
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;
+    border-left-width: 1px;
+    border-left-color: #a0a0a0;
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f0f0f0, stop: 1 #e5e5e5);
+}
+QComboBox::drop-down:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #e0e0f0, stop: 1 #d5d5e5);
+}
+QComboBox::down-arrow {
+    width: 0; 
+    height: 0; 
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #555; /* Creates a downward-pointing triangle */
+    margin: 0 auto;
+}
+/* popup list */
+QComboBox QAbstractItemView {
+    border: 1px solid #9fb3cc; 
+    background: #ffffff; 
+    color: #222;
+    selection-background-color: #4a90e2; 
+    selection-color: #ffffff; 
+    padding: 2px;
+}
+
+/* ---------- Slider (Win7-like handle) ---------- */
+QSlider::groove:horizontal {
+    border: 1px solid #9fb3cc; 
+    height: 8px; 
+    border-radius: 4px;
+    background: qlineargradient(x1:0,y1:0,x2:0,y2:1, stop:0 #f7fbff, stop:1 #dbe8f7);
+}
+QSlider::sub-page:horizontal {
+    background: qlineargradient(x1:0,y1:0,x2:0,y2:1, stop:0 #a7d0ff, stop:1 #5aa8ff);
+    border: 1px solid #7fb1e1; 
+    height: 8px; 
+    border-radius: 4px;
+}
+QSlider::add-page:horizontal { 
+    background: transparent; 
+    border: none; 
+}
+QSlider::handle:horizontal {
+    width: 12px; 
+    margin: -5px 0; 
+    border-radius: 4px; 
+    border: 1px solid #5a8acb;
+    background: qlineargradient(x1:0,y1:0,x2:0,y2:1,
+    stop:0 #eef5ff, stop:1 #cfe1ff);
+}
+QSlider::handle:horizontal:hover { 
+    border: 1px solid #3a78c7; 
+    background: qlineargradient(x1:0,y1:0,x2:0,y2:1, stop:0 #f5f9ff, stop:1 #dce8fa); /* CORRECTION 3: Removed extra braces */
+}
+QSlider::handle:horizontal:pressed {
+    background: qlineargradient(x1:0,y1:0,x2:0,y2:1, stop:0 #dce8fa, stop:1 #f5f9ff); /* CORRECTION 4: Adjusted gradient */
+}
+
+/* ---------- Tabs ---------- */
+QTabWidget::pane { 
+    border: 1px solid #cfd6e0; 
+    border-top: none; 
+}
+QTabBar::tab {
+    background: #f0f4fa; 
+    border: 1px solid #cfd6e0; 
+    border-bottom: none;
+    padding: 6px 12px; 
+    border-top-left-radius: 4px; 
+    border-top-right-radius: 4px;
+    margin-right: 0; 
+    color: #556;
+}
+QTabBar::tab:selected { 
+    background: #ffffff; 
+    border-color: #cfd6e0; 
+    margin-bottom: -1px; 
+    color: #222; 
+}
+QTabBar::tab:!selected:hover { 
+    background: #e6eef7; 
+}
+
+/* ---------- TextEdit (Log) ---------- */
+QTextEdit {
+    background: #ffffff; 
+    color: #333;
+    border: 1px solid #9fb3cc; 
+    border-radius: 4px;
+}
+QTextEdit QScrollBar:vertical {
+    border: 1px solid #c0c0c0;
+    background: #f0f0f0;
+    width: 15px;
+    margin: 15px 0 15px 0;
+}
+QTextEdit QScrollBar::handle:vertical {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop: 0 #e1e1e1, stop: 1 #d1d1d1);
+    border: 1px solid #b0b0b0;
+    border-radius: 3px;
+    min-height: 20px;
+}
+
+QTextEdit QScrollBar::handle:vertical:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop: 0 #d1d1e1, stop: 1 #c1c1d1);
+}
+
+QTextEdit QScrollBar::add-line:vertical {
+    border: 1px solid #c0c0c0;
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f0f0f0, stop: 1 #e5e5e5);
+    height: 15px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+
+QTextEdit QScrollBar::sub-line:vertical {
+    border: 1px solid #c0c0c0;
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f0f0f0, stop: 1 #e5e5e5);
+    height: 15px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+QTextEdit QScrollBar::up-arrow:vertical {
+    width: 0; height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid #555;
+}
+QTextEdit QScrollBar::down-arrow:vertical {
+    width: 0; height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #555;
+}
+
+
+QTextEdit QScrollBar::add-page:vertical, QTextEdit QScrollBar::sub-page:vertical {
+    background: none;
+}
+/* ---------- Status Bar ---------- */
+QStatusBar { 
+    background: #eef3f8; 
+    border-top: 1px solid #cfd6e0; 
+    color: #5d6d7e; 
+}
